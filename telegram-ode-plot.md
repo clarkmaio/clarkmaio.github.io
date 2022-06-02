@@ -12,11 +12,15 @@ This is simple: just open your telegram app and look for **OdePlot**, click on t
 
 At this point you will see this:
 
+![](.gitbook/assets/screen\_1\_mod.png)
+
 ### How I am supposed to use it?
 
 Very simple... you have just to write down an equation of a first order ode `y'=f(x,y)`.
 
 You will immediately receive the image of the plot of the solution. For example writing `y'=y` (see screenshots below).
+
+![](.gitbook/assets/screen\_2.png)
 
 ### Can I change settings?
 
@@ -26,6 +30,8 @@ Of course! you can setup 2 values:
 * **x axis interval**: you can set the x axis interval that will be displayed in the plot by using the command `/set_x_interval`
 
 You can print a recap of all commands by using the command `/help`
+
+![](<.gitbook/assets/screen\_3 (1).png>) ![](<.gitbook/assets/screen\_4 (2).png>)
 
 ### Ok but why it's not working?
 
