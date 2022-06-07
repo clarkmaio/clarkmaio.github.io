@@ -16,7 +16,11 @@ At this point you will see this:
 
 ### How I am supposed to use it?
 
-Very simple... you have just to write down an equation of a first order ode `y'=f(x,y)`.
+Very simple... you have just to write down an equation of a first order ode:
+
+$$
+y'=f(x,y)
+$$
 
 You will immediately receive the image of the plot of the solution. For example writing `y'=y` (see screenshots below).
 
