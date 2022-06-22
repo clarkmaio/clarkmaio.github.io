@@ -56,9 +56,11 @@ plt.plot(data, subplots=True)
 
 ### What's next?
 
-* Introduction of moon phase as variable&#x20;
-* Deeper seasonality analysis
-* Autoregressive model for short term prediction
+1. Introduction of moon phase as variable&#x20;
+2. Deeper seasonality analysis
+3. Autoregressive model for short term prediction
+
+
 
 Stay tuned!
 
