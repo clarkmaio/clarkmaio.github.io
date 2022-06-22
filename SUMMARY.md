@@ -1,5 +1,6 @@
 # Table of contents
 
-* [🏡 Home page](README.md)
+* [🏡 Ciau](README.md)
 * [🤖 Telegram ODE plot](telegram-ode-plot.md)
-* [Project Euler](project-euler.md)
+* [📚 Project Euler](project-euler.md)
+* [✨ Aurora Borealis](aurora-borealis.md)

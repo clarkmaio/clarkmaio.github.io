@@ -1,4 +1,4 @@
-# Project Euler
+# 📚 Project Euler
 
 **Project Euler** is [this](https://projecteuler.net/). It is a collection of problems (mostly related to algebra and algorithms).
 
