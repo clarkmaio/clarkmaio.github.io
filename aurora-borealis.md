@@ -22,6 +22,8 @@ It is well known that Aurora has a yearly cycle and it is stronger on average du
 
 By a simple analysis it turns out that there is also a seasonality of about _**7 years**_. For example in 2022 we are in a ascending phase meaning that I expect on average stronger Aurora in the next years.
 
+![](.gitbook/assets/aurora\_pacf\_acf\_kp.PNG)
+
 ### The dashboard
 
 Thank to the **Streamlit** you can easily play with the dashboard using the link:
