@@ -65,7 +65,7 @@ The solution is `233168`
 
 `A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99. Find the largest palindrome made from the product of two 3-digit numbers.`
 
-In this case I've just brute force by looping over all integers starting from biggers one.
+In this case I've just brute force by checking over all integers that are product of two 3-digit numbers, starting from biggest to the smallest.
 
 #### Solution:
 
