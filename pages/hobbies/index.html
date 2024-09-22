@@ -520,6 +520,11 @@
 
   <h1>Index</h1>
 
+<hr />
+<p>hide:
+    - navigation
+    - toc</p>
+<hr />
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cards</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -527,6 +532,13 @@
 </div>
 </div>
 </div>
+<div class="highlight"><pre><span></span><code>graph LR
+  A[Start] --&gt; B{Error?};
+  B --&gt;|Yes| C[Hmm...];
+  C --&gt; D[Debug];
+  D --&gt; B;
+  B ----&gt;|No| E[Yay!];
+</code></pre></div>
 
 
 
