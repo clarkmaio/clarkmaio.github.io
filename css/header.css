@@ -1,0 +1,8 @@
+h2 {
+    font-size: 36px; /* Regola la dimensione del testo */
+    color: #3498db;  /* Colore del testo (puoi modificarlo o rimuoverlo) */
+    border: 2px solid black; /* Bordo nero */
+    padding: 10px;  /* Spaziatura interna per distanziare il testo dal bordo */
+    border-radius: 0; /* Assicurati che il bordo sia rettangolare */
+    display: inline-block; /* Assicura che il bordo abbracci solo il testo */
+}
