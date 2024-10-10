@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#parsermanager" class="md-skip">
+        <a href="#introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -568,7 +568,7 @@
         
   
   <span class="md-ellipsis">
-    Index
+    Useful!
   </span>
   
 
@@ -604,68 +604,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#parsermanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      ParserManager
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#datacatalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      DataCatalog
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#context" class="md-nav__link">
-    <span class="md-ellipsis">
-      Context
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pipelines-and-nodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pipelines and nodes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#datatransformer" class="md-nav__link">
-    <span class="md-ellipsis">
-      DataTransformer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#decorators" class="md-nav__link">
-    <span class="md-ellipsis">
-      Decorators
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -680,17 +620,33 @@
                   
 
 
-  <h1>Essentials</h1>
-
-<p>After having worked on very different projects I've realised that still there are objects that I end up implementing every time.</p>
-<p>I'v decided to implement them once and import them from a "general" repository.</p>
-<p>In this page I will present main tools with few examples.</p>
+<h1 id="introduction">Introduction</h1>
+<p>We italians, whenever we struggle accomplish a complicated task, are used to compose small "poetries" (2/3 words long, similar to japenese haiku). 
+These poetries consist in a sort of dialog we have with God but I would not call them prayers.</p>
+<p>We call these italian haiku <strong><em>bestemmie</em></strong>.</p>
+<p><br>
+<br>
+A couple of weeks ago I started studing <a href="https://kedro.org/">kedro</a>, a toolbox to produce programs by McKinsey.</p>
+<p>I was interested in the way this package handles dataset and the concept of nodes and pipelines to make your code clean and well organised.</p>
+<p>But I was amazed by the interactive visualisation tool they've implemented to aloud user visualize how his program is organized and the modules that compose it.</p>
+<p>For <strong>few weeks</strong> I force my self to use this package for my projects, I really wanted to use that visualisation tool on daily basis. 
+I struggled a lot. I soon realized how rigid the package was, how difficult it was to add even a little of customisation and the amount of black box functions I was supposed to call not understanding what they were doing under the hood just to make it works.</p>
+<p><br>
+<br></p>
+<p><strong>The final result is that</strong>:
+* I gave up kedro due to frustration.
+* I've created my own package to replicate kedro's objects I like the most appling some changes to improve them.
+* After this experience I can now compose <strong><em>bestemmie</em></strong>  up to 10 words long, engaging multiple deities even from different religions!</p>
+<p><br>
+<br></p>
+<h1 id="the-package">The package</h1>
+<p>In this page I will illustrate what I've implemented guiding with examples and short explainations.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>You can find this <em>tool box</em> in the github repository <a href="https://github.com/clarkmaio/clarkpy_essentials"><strong>clarkpy_essentials</strong></a>.</p>
-<p>To install the repository:
+<p>You can find this <em>tool box</em> in the github repository <a href="https://github.com/clarkmaio/clarkpy_essentials"><strong>clarkpy_essentials</strong></a>.
+The package can be installed with the command:</p>
 <div class="highlight"><pre><span></span><code>pip install git+https://github.com/clarkmaio/clarkpy_essentials.git
-</code></pre></div></p>
+</code></pre></div>
 </div>
 <h2 id="parsermanager"><strong>ParserManager</strong></h2>
 <p>Let's start from a dummy one: the <code>ParserManager</code>.</p>
