@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -624,8 +633,8 @@
 <iframe width="900" height="450" src="https://www.youtube.com/embed/1CN77GpP7VE?si=-mlzNG8SNpSRBhJL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <p><div, style="align-items: center;">
- <img src="/assets/images/photo/ivrea/ivrea_1.jpg" style="width: 50%; margin: 10px">
- <img src="/assets/images/photo/ivrea/ivrea_3.jpg" style="width: 50%; margin: 10px">
+ <a class="glightbox" href="/assets/images/photo/ivrea/ivrea_1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/assets/images/photo/ivrea/ivrea_1.jpg" style="width: 50%; margin: 10px"></a>
+ <a class="glightbox" href="/assets/images/photo/ivrea/ivrea_3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="/assets/images/photo/ivrea/ivrea_3.jpg" style="width: 50%; margin: 10px"></a>
 </div></p>
 
 
@@ -718,5 +727,7 @@
         <script src="https://unpkg.com/mermaid@10.0.2/dist/mermaid.esm.min.mjs" type="module"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -622,21 +631,21 @@
 
 <h1 id="introduction">Introduction</h1>
 <p>We italians, whenever we struggle accomplish a complicated task, are used to compose small "poetries" (2/3 words long, similar to japenese haiku). 
-These poetries consist in a sort of dialog we have with God but I would not call them prayers.</p>
+These poetries consist in a sort of dialog we have with God.</p>
 <p>We call these italian haiku <strong><em>bestemmie</em></strong>.</p>
 <p><br>
 <br>
-A couple of weeks ago I started studing <a href="https://kedro.org/">kedro</a>, a toolbox to produce programs by McKinsey.</p>
+A couple of weeks ago I started studing <a href="https://kedro.org/">kedro</a>, a package to produce programs by McKinsey.</p>
 <p>I was interested in the way this package handles dataset and the concept of nodes and pipelines to make your code clean and well organised.</p>
-<p>But I was amazed by the interactive visualisation tool they've implemented to aloud user visualize how his program is organized and the modules that compose it.</p>
-<p>For <strong>few weeks</strong> I force my self to use this package for my projects, I really wanted to use that visualisation tool on daily basis. 
+<p>But I was amazed by the interactive visualisation tool they've implemented to visualize the structure of the program and the modules that compose it.</p>
+<p>For <strong>few weeks</strong> I force my self to use this package; I really wanted to use that visualisation tool on daily basis. 
 I struggled a lot. I soon realized how rigid the package was, how difficult it was to add even a little of customisation and the amount of black box functions I was supposed to call not understanding what they were doing under the hood just to make it works.</p>
 <p><br>
 <br></p>
 <p><strong>The final result is that</strong>:
 * I gave up kedro due to frustration.
 * I've created my own package to replicate kedro's objects I like the most appling some changes to improve them.
-* After this experience I can now compose <strong><em>bestemmie</em></strong>  up to 10 words long, engaging multiple deities even from different religions!</p>
+* I can now compose <strong><em>bestemmie</em></strong>  up to 10 words long, engaging multiple deities even from different religions!</p>
 <p><br>
 <br></p>
 <h1 id="the-package">The package</h1>
@@ -677,9 +686,10 @@ The package can be installed with the command:</p>
 </code></pre></div>
 <h2 id="datacatalog"><strong>DataCatalog</strong></h2>
 <p>This class is nothing but an huge <em>if/else</em> function to handle different type of dataset.</p>
-<p>The idea has been stolen directly from <a href="https://docs.kedro.org/en/stable/data/index.html"><strong>kedro</strong></a> than implement a very similar structure.
-In <strong>kedro</strong> the user write down a yaml file to map dataset to a label. The dataset can be then loaded in pipeline simply using the label as input.</p>
+<p>The idea has been stolen directly from <a href="https://docs.kedro.org/en/stable/data/index.html"><strong>kedro</strong></a>.
+In <strong>kedro</strong> the user write down a yaml file to map dataset to a label. The dataset can be then loaded in pipeline simply using the label as input of nodes.</p>
 <p>Since I was looking for something more explicit and a tool that could be used outside a <strong>kedro</strong> pipeline I've implemented the <code>DataCatalog</code> class.</p>
+<p>The most important thing to use this class is to write properly the data catalog.</p>
 <p>It is important to specify for each label the parameters:</p>
 <ul>
 <li><code>type</code>: namely the way the dataset will be loaded. Can be <code>pandas.csv</code>, <code>pandas.excel</code>, <code>pandas.hdf</code>, <code>pandas.parquet</code>, <code>polars.csv</code>, <code>polars.parquet</code>,<code>yaml</code>, <code>json</code>, <code>torch</code>, <code>pickle</code></li>
@@ -706,16 +716,27 @@ In <strong>kedro</strong> the user write down a yaml file to map dataset to a la
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">clarkpy_essentials</span> <span class="kn">import</span> <span class="n">DataCatalog</span>
 
 <span class="c1"># Initialize the datacatalog specifying the catalog.yml path and the source path that will be used to load datasets.</span>
-<span class="n">SOURCE_PATH</span> <span class="o">=</span> <span class="s1">&#39;/home/user&#39;</span>
 <span class="n">CATALOG_PATH</span> <span class="o">=</span> <span class="s1">&#39;/home/user/catalog.yml&#39;</span>
-<span class="n">dc</span> <span class="o">=</span> <span class="n">DataCatalog</span><span class="p">(</span><span class="n">catalog</span><span class="o">=</span><span class="n">CATALOG_PATH</span><span class="p">,</span> <span class="n">source_path</span> <span class="o">=</span> <span class="n">SOURCE_PATH</span><span class="p">)</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">DataCatalog</span><span class="p">(</span><span class="n">catalog</span><span class="o">=</span><span class="n">CATALOG_PATH</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pandas Dataset&#39;</span><span class="p">,</span> <span class="n">dc</span><span class="p">(</span><span class="s1">&#39;PandasDataset&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Polars Dataset&#39;</span><span class="p">,</span> <span class="n">dc</span><span class="p">(</span><span class="s1">&#39;PolarsDataset&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;URL Pandas Dataset&#39;</span><span class="p">,</span> <span class="n">dc</span><span class="p">(</span><span class="s1">&#39;UrlPandasDataset&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div>
+<p>You can even add a custom loader function using the method:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">myloaderfunc</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="n">load</span> <span class="n">file</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">file</span>
+
+<span class="kn">from</span> <span class="nn">clarkpy_essentials</span> <span class="kn">import</span> <span class="n">DataCatalog</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">DataCatalog</span><span class="p">(</span><span class="n">catalog</span><span class="o">=</span><span class="n">CATALOG_PATH</span><span class="p">)</span>
+<span class="n">dc</span><span class="o">.</span><span class="n">add_custom_loader</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;myloader&#39;</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">myloaderfunc</span><span class="p">)</span>
+</code></pre></div>
+<p>Now you can load data with label <code>'mylader'</code> using function <code>myloaderfunc</code>.</p>
 <h2 id="context"><strong>Context</strong></h2>
-<p>This is a very trivial class. The only purpose it to store global senttings and variables as properties of a class.</p>
+<p>This is a very trivial class. The only purpose it to store senttings and variables as properties of a class.</p>
 <p>Whatever you pass to the constructor of this class will be trasformed in a property.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -733,7 +754,7 @@ In <strong>kedro</strong> the user write down a yaml file to map dataset to a la
 <h2 id="pipelines-and-nodes"><strong>Pipelines and nodes</strong></h2>
 <p>Again I've tried to copy a feature of kedro package but tring to make it easier to use it.</p>
 <p>I really like the way <strong>Pipelines</strong> and <strong>Nodes</strong> work in kedro, in particular the elegant way to pass input/output across different nodes.</p>
-<p>You can use mine <code>Pipeline</code> and <code>Node</code> classes to accomplish the same but you can easily use them in your program without using kedro structure.</p>
+<p>You can use mine <code>Pipeline</code> and <code>Node</code> classes to accomplish the same but you can easily use them in your program without using kedro.</p>
 <p>Here a dummy example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">clarkpy_essentials</span> <span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">Context</span>
 
@@ -764,15 +785,15 @@ In <strong>kedro</strong> the user write down a yaml file to map dataset to a la
 <span class="n">pipeline_results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All pipeline variables&#39;</span><span class="p">,</span> <span class="n">pipeline_results</span><span class="p">)</span>
 </code></pre></div>
-<p>For more complex example have a look at mine <a href="https://github.com/clarkmaio/cookiecutter_template"><code>forecast</code> template</a>.</p>
+<p>For more complex example have a look at one of mine <a href="https://github.com/clarkmaio/cookiecutter_template">template</a>.</p>
 <h2 id="datatransformer"><strong>DataTransformer</strong></h2>
 <p>When dealing with multiple models it happens that different data processing are needed depending on the model you are using.</p>
-<p>To make it easyier to control this operations I've created a class that take in input a list of instructions and transform a dataset accordingly.</p>
+<p>To make it easier to control this operations I've created a class that take in input a list of instructions and transform a dataset accordingly.</p>
 <p>Ideally you should create instructions (in the form of a <code>yaml</code>) for each model.</p>
 <p>To use correctly this class you should:</p>
 <ol>
 <li>
-<p>Write the functions to transform data using the template:</p>
+<p>Write the functions to transform data like so:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">transformer_1</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwars</span><span class="p">):</span>
     <span class="n">transform</span> <span class="n">X</span> <span class="n">some</span> <span class="n">how</span>
     <span class="k">return</span> <span class="n">X</span>
@@ -783,7 +804,7 @@ In <strong>kedro</strong> the user write down a yaml file to map dataset to a la
 </code></pre></div>
 </li>
 <li>
-<p>Create an instance of <code>DataTransformer</code> and map the functions associating a label</p>
+<p>Create an instance of <code>DataTransformer</code> and map the functions:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dt</span> <span class="o">=</span> <span class="n">DataTransformer</span><span class="p">({</span>
     <span class="s1">&#39;t1&#39;</span><span class="p">:</span> <span class="n">trabsformer_1</span><span class="p">,</span>
     <span class="s1">&#39;t2&#39;</span><span class="p">:</span> <span class="n">transformer_2</span> 
@@ -792,15 +813,15 @@ In <strong>kedro</strong> the user write down a yaml file to map dataset to a la
 </li>
 <li>
 <p>Create list of instructions.</p>
-<p>Each instruction step must consist in a dictionary containing the keys:</p>
+<p>Each instruction step must consist in a dictionary containing keys:</p>
 <ul>
 <li><code>type</code>: label of the function to apply </li>
-<li><code>kargs</code> [optional]: function kwargs</li>
+<li><code>kwargs</code> [optional]: function kwargs</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">instructions</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
         <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;t1&#39;</span>
-        <span class="s1">&#39;kargs&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s1">&#39;kwarg1&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
             <span class="s1">&#39;kwarg2&#39;</span><span class="p">:</span> <span class="o">...</span>
         <span class="p">}</span>
@@ -820,7 +841,7 @@ In <strong>kedro</strong> the user write down a yaml file to map dataset to a la
 </code></pre></div></p>
 </li>
 </ol>
-<p>Here a complete dummy example:</p>
+<p>Here a complete example:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">X</span>
 
@@ -853,9 +874,10 @@ In <strong>kedro</strong> the user write down a yaml file to map dataset to a la
 <span class="nb">print</span><span class="p">(</span><span class="n">X_transformed</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="decorators"><strong>Decorators</strong></h2>
+<p>Just a collection of decorators you can import from <code>clarkpy_essentials.decorators</code>.</p>
 <ul>
-<li><code>@force_kwargs</code>:  raise an error if function arguments are not passed through key.</li>
-<li><code>@deepcopy_args</code>: deep copy args and kwargs passed to a function.</li>
+<li><code>@force_kwargs</code>:  raise an error if function arguments are not passed through keys.</li>
+<li><code>@deepcopy_args</code>: deep copy args and kwargs passed to a function (usefully to avoid operations on pandas dataframe copy to affect original one).</li>
 </ul>
 
 
@@ -948,5 +970,7 @@ In <strong>kedro</strong> the user write down a yaml file to map dataset to a la
         <script src="https://unpkg.com/mermaid@10.0.2/dist/mermaid.esm.min.mjs" type="module"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -72,6 +81,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#legend" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -277,7 +291,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -586,6 +602,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -595,6 +613,32 @@
   
   
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#legend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legend
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sphere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sphere
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -611,12 +655,27 @@
 
   <h1>Amigurumi</h1>
 
-<hr />
-<p>hide:
-    - navigation
-    - toc
-title: amigurumi</p>
-<hr />
+<h2 id="legend">Legend</h2>
+<div class="highlight"><pre><span></span><code>sc: single crochet
+inc: increase
+dec: decrease
+</code></pre></div>
+<h2 id="sphere">Sphere</h2>
+<p><a class="glightbox" href="https://dummyimage.com/600x400/eee/aaa" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="left" alt="Image title" src="https://dummyimage.com/600x400/eee/aaa" /></a> 
+<div class="highlight"><pre><span></span><code>1. 6sc (magic circle) [6]
+2. (inc) x 6 [12]
+3. (sc, inc) x 6 [18]
+4. sc, inc, (2sc, inc) x 5, sc [24]
+5. (3sc, inc) x 6 [30]
+6-7. 30sc [30]
+8. 2sc, inc, (4sc, inc) x 5, 2sc [36]
+9-11. 36sc [36]
+12. 2sc, dec, (4sc, dec) x 5, 2sc [30]
+13-14. 30sc [30]
+15. (3sc, dec) x 6 [24]
+16. sc, dec, (2sc, dec) x 5, sc [18]
+17. (sc, dec) x 6 [12]
+</code></pre></div></p>
 
 
 
@@ -624,8 +683,13 @@ title: amigurumi</p>
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -703,5 +767,7 @@ title: amigurumi</p>
         <script src="https://unpkg.com/mermaid@10.0.2/dist/mermaid.esm.min.mjs" type="module"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
