@@ -1,12 +1,14 @@
 
 /* Style header */
-
-
 .md-header {
-    background-color: #ffffff; 
+    background-color: white; 
 }
 
+.md-header__title {
+    color: black
+}
 
 .md-header-nav__title, .md-nav__link {
-    color: #ffffff;
+    color: black;
 }
+    
