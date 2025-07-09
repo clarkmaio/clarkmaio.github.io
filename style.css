@@ -237,3 +237,17 @@ p {
             margin: 0px auto 0 auto;
         }
 }
+
+
+.bottom-left-text {
+    position: fixed; 
+    bottom: 10px;
+    left: 10px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 3px;
+    /* font-family: Arial, sans-serif; */
+    font-size: 15px;
+    color: gray;
+    z-index: 1000; 
+}
