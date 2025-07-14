@@ -247,7 +247,21 @@ p {
     padding: 5px;
     border-radius: 3px;
     /* font-family: Arial, sans-serif; */
-    font-size: 15px;
+    font-size: 13px;
+    color: gray;
+    z-index: 1000; 
+}
+
+
+.top-left-icon {
+    position: fixed; 
+    top: 10px;
+    left: 10px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 3px;
+    /* font-family: Arial, sans-serif; */
+    font-size: 13px;
     color: gray;
     z-index: 1000; 
 }
