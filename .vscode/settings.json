@@ -1,0 +1,18 @@
+{
+    "piny.project_settings": {
+        "open-pages": [
+            "pinyfakepage.html"
+        ],
+        "component-settings": {
+            "pages/blog/_mockup.html:::Temp": {
+                "route": null
+            }
+        },
+        "app-routes": {
+            "routes": [
+                "/"
+            ],
+            "current_route": "/"
+        }
+    }
+}
