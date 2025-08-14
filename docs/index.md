@@ -7,8 +7,7 @@ hide:
 # ciau
 
 i am Andrea, you can call me Andrea (or clarkmaio) <br>
-i work as data scientist but I am a mathematician
-
+i'm a mathematician and i ask good questions.
 
 <br>
 <br>

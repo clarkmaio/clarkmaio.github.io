@@ -28,7 +28,7 @@ theme:
           toggle:
             icon: material/lightbulb
             name: Switch to dark mode
-          primary: wihte
+          primary: white
         
 
         - scheme: slate
