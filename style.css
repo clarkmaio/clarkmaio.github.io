@@ -303,3 +303,9 @@ p {
 
 
 
+pre {
+  background-color: #f4f4f4;
+  padding: 15px; /* Aggiunge un po' di spazio interno per renderlo più leggibile */
+  border-radius: 5px; /* Arrotonda gli angoli del blocco */
+}
+
