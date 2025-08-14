@@ -9,6 +9,9 @@ hide:
 i am Andrea, you can call me Andrea (or clarkmaio) <br>
 i'm a mathematician and i ask good questions.
 
+![Image title](../assets/images/me.png){ align=right }
+
+
 <br>
 <br>
 <br>
