@@ -1,0 +1,104 @@
+site_name: clarkmaio
+
+# ----------------------------------------------
+# Theme
+# ----------------------------------------------
+theme:
+    name: material # terminal material
+    logo: assets/images/clarkmaio_logo.png
+
+    font:
+        text: roboto
+    
+    features:
+        - navigations.tracking
+        - navigation.tabs
+        - navigation.tabs.sticky # nav remains when scrolling
+        - navigation.sections
+        - navigation.expand
+        - navigation.instant.preview
+        - navigation.instant
+        - cards
+        - header.autohide
+
+        
+    
+    palette:
+        - scheme: default    
+          toggle:
+            icon: material/lightbulb
+            name: Switch to dark mode
+          primary: wihte
+        
+
+        - scheme: slate
+          toggle:
+            icon: material/lightbulb-outline
+            name: Switch to light mode
+          primary: white
+
+# ----------------------------------------------
+# Navigation bar
+# ----------------------------------------------
+nav:
+    - it's me, clark:
+        - index.md
+    - projects:
+        - pages/projects/index.md
+    - hobbies:
+        - pages/hobbies/index.md
+    - useful!:
+        - pages/useful!/index.md
+        
+
+        
+# ----------------------------------------------
+# extra
+# ----------------------------------------------
+extra_css:
+  - stylesheets/link.css
+  - stylesheets/footer.css
+  - stylesheets/header.css
+
+extra:
+    social:
+        - icon: fontawesome/brands/github-alt
+          link: https://github.com/clarkmaio
+        - icon: fontawesome/brands/linkedin
+          link: https://www.linkedin.com/in/clarkmaio/
+
+# ----------------------------------------------
+# Plugins
+# ----------------------------------------------    
+plugins:
+    - search
+    - glightbox
+    
+    
+markdown_extensions:
+    - attr_list
+    - md_in_html
+    - def_list
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences:
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.emoji:
+        emoji_index: !!python/name:material.extensions.emoji.twemoji
+        emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.tilde
+
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid@10.0.2/dist/mermaid.esm.min.mjs
+
