@@ -108,13 +108,13 @@ a, a:hover, a:visited {
 
 h1, h2, h3 {
     margin-top: 0;
-    margin-bottom: 0px;
-    font-size: 30px;
+    margin-bottom: 0;
+    font-size: 40px;
     font-weight: normal;
    
 }
 
-h2 {
+/* h2 {
     font-size: 20px;
     margin-bottom: 0px;
 }
@@ -123,18 +123,18 @@ h3 {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 0
-}
+} */
 
 ul + h3 {
     margin-top: 20px;
 }
 
-ul {
+/* ul {
     list-style-position: unset;
     list-style-type: none;
     padding: 0;
     margin: 0
-}
+} */
 
 .ul__links p {
     margin: 0
