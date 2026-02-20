@@ -1,0 +1,77 @@
+name: Sync tree.html to clarkmaio README
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'assets/tree.html'
+  workflow_dispatch: # Permette di lanciarla manualmente
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout clarkmaio.github.io
+        uses: actions/checkout@v4
+        with:
+          path: source-repo
+
+      - name: Checkout clarkmaio/clarkmaio
+        uses: actions/checkout@v4
+        with:
+          repository: clarkmaio/clarkmaio
+          path: target-repo
+          #  Devi creare un Personal Access Token con permessi 'repo' e aggiungerlo
+          # come repository secret chiamato 'PROFILE_SYNC_TOKEN' in clarkmaio.github.io
+          token: ${{ secrets.PROFILE_SYNC_TOKEN }}
+
+      - name: Update README.md
+        run: |
+          cd target-repo
+          
+          python3 -c '
+          import os
+          
+          with open("../source-repo/assets/tree.html", "r") as f:
+              tree_content = f.read()
+          
+          readme_path = "README.md"
+          if os.path.exists(readme_path):
+              with open(readme_path, "r") as f:
+                  readme = f.read()
+          else:
+              readme = ""
+              
+          start_tag = "<!-- tree-start -->"
+          end_tag = "<!-- tree-end -->"
+          
+          if start_tag in readme and end_tag in readme:
+              start_idx = readme.find(start_tag) + len(start_tag)
+              end_idx = readme.find(end_tag)
+              new_readme = readme[:start_idx] + "\n" + tree_content + "\n" + readme[end_idx:]
+              print("Trovati i tag, aggiorno il contenuto al loro interno.")
+          else:
+              new_readme = tree_content
+              print("Tag non trovati. Sostituisco l intero README.md con il contenuto di tree.html.")
+              
+          with open(readme_path, "w") as f:
+              f.write(new_readme)
+          '
+          
+      - name: Commit and Push changes
+        run: |
+          cd target-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          
+          # Esegue il commit solo se ci sono cambiamenti
+          if git diff --staged --quiet; then
+            echo "Nessun cambiamento da committare"
+          else
+            git commit -m "Sync tree.html to README"
+            # Assicuriamoci che il branch si chiami main o master, proviamo main
+            git push origin HEAD:main
+          fi
