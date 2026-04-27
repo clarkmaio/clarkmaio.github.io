@@ -2,14 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>clarkmaio</title>
+    <title>We Have Cookies</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css" />
     <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css" />
     <link rel="stylesheet" href="./style.css" />
-</head>
+    <style>
+        .book-list {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
 
+        .book-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .book-date {
+            min-width: 90px;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .book-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-author {
+            font-size: 16px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
 
 <body class="home__body">
     <main class="home">
@@ -18,23 +48,24 @@
                 <div class="card__description">
                     <h1>We Have Cookies</h1>
                     <div class="card__info">
-
                         <br>
-                        <p>
-                        Description here    
-                        </p>
+                        <ul class="book-list">
+                            <li>
+                                <span class="book-date"><b>Apr 2026</b></span>
+                                <span class="book-info">
+                                    <span>the unit</span>
+                                    <span class="book-author">ninni holmqvist</span>
+                                </span>
+                            </li>
 
-                        <br><br>
-                        <h3>U200</h3>
-                        <ul>
-                            <li>Coffee</li>
-                            <li>Tea</li>
-                            <li>Milk</li>
+                            <li>
+                                <span class="book-date"><b>Feb 2026</b></span>
+                                <span class="book-info">
+                                    <span>the adversary</span>
+                                    <span class="book-author">emmanuel carrère</span>
+                                </span>
+                            </li>
                         </ul>
-
-                        <span>01.01.2026</span><span>Title</span>
-
-                         
                     </div>
                 </div>
             </div>
@@ -47,36 +78,16 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-01ZHCN3XE4');
 </script>
-    <script type="text/javascript">
-        const beast = document.getElementById("beast")
-        beast.addEventListener(
-        "mouseover",
-        (event) => {
-            event.target.src = "gifs/ezgif-4-2a966d9e45.gif"
-        },
-        false
-        );
-        beast.addEventListener(
-        "mouseout",
-        (event) => {
-            event.target.src = "P5.png"
-        },
-        false
-        );
-    </script>
-  
 
-  
 <!-- Koalendar Popup Widget Start -->
 <script>window.Koalendar = window.Koalendar || function(){(Koalendar.props = Koalendar.props || []).push(arguments)};</script>
 <script async src="https://koalendar.com/assets/widget.js"></script>
 <script>
   Koalendar('widget', {
     "url": "https://koalendar.com/e/meet-with-andrea-maioli",
-     "text": "",
+    "text": "",
     "shape": "rounded-full",
     "backgroundColor": "#27548A",
     "textColor": "#FFFFFF",
@@ -85,8 +96,9 @@
   });
 </script>
 <!-- Koalendar Popup Widget End -->
-</body>
 
+<a href="index.html" class="home-icon-link"><i class="fa-solid fa-house"></i></a>
+</body>
 
 <div class="bottom-left-text">
     This page has been brutally copied from <a href="https://diliberti.github.io/">Ivan Diliberti</a> personal page.<br>
